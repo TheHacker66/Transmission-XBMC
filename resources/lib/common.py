@@ -12,7 +12,8 @@ def get_settings():
         'port': __settings__.getSetting('rpc_port'),
         'user': __settings__.getSetting('rpc_user'),
         'password': __settings__.getSetting('rpc_password'),
-        'stop_all_on_playback': __settings__.getSetting('stop_all_on_playback')
+        'stop_all_on_playback': __settings__.getSetting('stop_all_on_playback'),
+        'restart_if_was_seeding': __settings__.getSetting('restart_if_was_seeding')
     }
     return params
 

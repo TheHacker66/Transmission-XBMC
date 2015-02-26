@@ -6,4 +6,5 @@
     <setting id="rpc_user" type="text" label="32803" default="" />
     <setting id="rpc_password" type="text" option="hidden" label="32804" default="" />
     <setting id="stop_all_on_playback" type="bool" label="32805" default="false" />
+    <setting id="restart_if_was_seeding" type="bool" label="32806" enable="eq(-1,true)" default="false" />
 </settings>

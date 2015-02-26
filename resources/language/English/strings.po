@@ -172,8 +172,12 @@ msgctxt "#32805"
 msgid "Stop all torrents on video playback"
 msgstr ""
 
+msgctxt "#32806"
+msgid "When finished, also restart torrents that were previously seeding"
+msgstr ""
+
 #Errors
-#empty strings from id 32806 to 32899
+#empty strings from id 32807 to 32899
 
 msgctxt "#32900"
 msgid "An unexpected error occurred"

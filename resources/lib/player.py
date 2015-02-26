@@ -17,6 +17,7 @@ class SubstitutePlayer(xbmc.Player):
     def __init__(self):
         xbmc.Player.__init__(self)
         self.prev_settings = {}
+        self.wasSeeding = []
         self.refreshSettings()
 
     def onPlayBackStarted(self):
@@ -30,15 +31,23 @@ class SubstitutePlayer(xbmc.Player):
             self.startAllTorrents()
 
     def startAllTorrents(self):
+        settings = common.get_settings()
         if self.transmission:
             torrents = self.transmission.list()
             for tid, torrent in torrents.iteritems():
-                self.transmission.start(tid)
+                if settings['restart_if_was_seeding'] == 'true':
+                    self.transmission.start(tid)
+                else :
+                    if tid not in self.wasSeeding:
+                        self.transmission.start(tid)
 
     def stopAllTorrents(self):
+        settings = common.get_settings()
         if self.transmission:
             torrents = self.transmission.list()
             for tid, torrent in torrents.iteritems():
+                if settings['restart_if_was_seeding'] == 'true' and torrent.status == "seeding":
+                    self.wasSeeding.append(tid)
                 self.transmission.stop(tid)
 
     def refreshSettings(self):
